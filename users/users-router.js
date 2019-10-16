@@ -18,9 +18,7 @@ router.get('/department', restricted, (req, res) => {
     const token = req.headers.authorization
 
     const decodedDepartment = extractUserDepartment(token)
-    
-    console.log(decodedDepartment)
-    
+      
     Users.findByDepartment(decodedDepartment)
     .then(users => res.json(users))
     .catch(err => res.status(500).json({ message: 'error retrieving users' }))
@@ -31,11 +29,12 @@ function extractUserDepartment(token) {
     let userDepartment = ''
     
     jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
-        userDepartment = JSON.stringify(decodedToken.department)
+        userDepartment = decodedToken.department;
     })
     
-
     return userDepartment
 }
-  
+ 
+
+
 module.exports = router;

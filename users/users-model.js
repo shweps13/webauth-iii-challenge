@@ -29,9 +29,8 @@ function findById(id) {
     .first();
 }
 
-function findByDepartment(department) {
+function findByDepartment(decodedDepartment) {
     return db('users')
-      // .where({ department })
-      .then(console.log(department))
-      // .then(decodedDepartment => findBy({ department: decodedDepartment }))
+      .where({ department: decodedDepartment })
+      .then(console.log(decodedDepartment))
   }
