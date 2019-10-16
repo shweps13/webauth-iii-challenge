@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const authRouter = require('../auth/auth-router.js');
+const usrRouter = require('../users/users-router.js')
 
 const logger = (req, res, next) => {
     console.log(`[${new Date().toISOString()}] Was method "${req.method}" to address "${req.path}"`);
@@ -17,6 +18,7 @@ server.use(cors());
 server.use(logger);
 
 server.use('/api', authRouter);
+server.use('/api/users', usrRouter);
 
 server.get('/', (req, res) => {
   res.send("It's alive!");

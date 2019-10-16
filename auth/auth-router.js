@@ -36,7 +36,7 @@ router.post('/login', (req, res) => {
           token,
         });
       } else {
-        res.status(401).json({ message: 'Invalid Credentials' });
+        res.status(401).json({ message: 'You shall not pass!' });
       }
     })
     .catch(error => {
@@ -48,7 +48,7 @@ function generateToken(user) {
   const payload = {
     username: user.username,
     subject: user.id,
-    role: user.role
+    department: user.department
   };
   
   const options = {

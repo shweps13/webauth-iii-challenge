@@ -3,7 +3,7 @@ module.exports = department => {
         if (department === req.user.department) {
             next();
         } else {
-            res.status(403).json({ message: "you have no access" });
+            res.status(403).json({ message: "You shall not pass!" });
         }
     };
 }
